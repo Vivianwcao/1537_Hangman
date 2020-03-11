@@ -7,31 +7,23 @@
 
 
 
-
 //generate 26 letters using object constructors.
 let lettersContainer = document.getElementById('letters');
-let box = document.createElement('tr');
-lettersContainer.appendChild(box);
 
-class letterButtons {
-    constructor(letter) {
-        this.name = letter;
+let list = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'];
+list.sort();
+function buttonGenerator(n) {
+    let i;
+    for (i = 0; i < n; i++) {
+        let bttn = document.createElement("button");
+        lettersContainer.appendChild(bttn);
+        bttn.innerHTML = list[i];
+        bttn.onclick = function click() {
+            console.log('button ' + bttn.innerHTML + ' is clicked');
+        }
     }
-    display() {
-        let letterBox = document.createElement('td');
-        letterBox.innerHTML = this.name;
-        box.appendChild(letterBox);
-    }  
-    // click() {
-    // }       
-    }
-    let list = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'];
-    list.sort();
-    for (x of list) {
-        letter = new letterButtons(x);
-        letter.display();
-    }
-
+}
+buttonGenerator(26);
             
 
 
