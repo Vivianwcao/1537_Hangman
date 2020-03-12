@@ -1,9 +1,23 @@
 //initialize variables
-
+let score = 0;
+let lives = 7;
 
 
 //generate 10 words and their descriptions(hint) in a dictionary.
+let blanks = document.getElementById("blanks");
+let wordBank = ["committee", "weather", "canopy", "acronym", "electrograph", "hypothetical", "growing", "study", "yolk", "yellow"]
+let guessedWord = ""
+blanks.innerText = ""
+let chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)]
+function generateBlanks () {
+    
+    for (i = 0; i < chosenWord.length; i++) {
+        guessedWord = guessedWord + "_"
+    }
+    return guessedWord
+}
 
+guessedWord = generateBlanks()
 
 
 
@@ -16,10 +30,12 @@ function buttonGenerator(n) {
     let i;
     for (i = 0; i < n; i++) {
         let bttn = document.createElement("button");
+        bttn.id = list[i]
         lettersContainer.appendChild(bttn);
         bttn.innerHTML = list[i];
         bttn.onclick = function click() {
             console.log('button ' + bttn.innerHTML + ' is clicked');
+            onLetterClick(bttn.innerHTML);
         }
     }
 }
@@ -30,8 +46,16 @@ buttonGenerator(26);
 
 //Blank lines:'_ _ _ _ _'
 
+console.log(guessedWord)
 
+function displayWord(word) {
+    blanks.innerText = ""
+    for (i = 0; i < word.length; i++) {
+    blanks.innerText = blanks.textContent + " " + word[i]
+    }
+}
 
+displayWord(guessedWord)
 
 
 //randomly select a word as user refreshes the page.
@@ -40,6 +64,39 @@ buttonGenerator(26);
 
 
 //**check whether each guess is correct/matches the word shown:
+function checkLetterInWord(letter) {
+    for (i = 0; i < chosenWord.length; i++) {
+        if (chosenWord.includes(letter)) {
+            return true
+        } else {
+            return false
+        }
+
+    }
+}
+
+function replaceBlanksWithLetter(letter) {
+    guessedWord = guessedWord.split("")
+    for (i = 0; i < guessedWord.length; i++) {
+        if (chosenWord[i] == letter) {
+            guessedWord[i] = letter
+        }
+        
+    }
+    guessedWord = guessedWord.join("")
+}
+
+function onLetterClick (letter) {
+    if (checkLetterInWord(letter)) {
+        replaceBlanksWithLetter(letter)
+        displayWord(guessedWord)
+        score = score + 1
+        document.getElementById("score").innerHTML = "Score: " +  score.toString()
+    } else {
+        lives = lives - 1
+        document.getElementById("lives").innerHTML = "Lives remain: " +  lives.toString()
+    }
+}
 //while life > 0:
 //      if correct -> 1. letter/s will be shown on coresponding blank lines
 //                    2. updates on "Score" (current + # of correct letters).
