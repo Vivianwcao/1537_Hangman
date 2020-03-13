@@ -8,35 +8,39 @@
 </head>
 <body>
     <h1>Hangman</h1>    
+    <div id = 'game'>
+        <!-- display lives and score -->
+        <div id = 'data'>
+            <h2 id = score>Score:</h2>
+            <h2 id = lives>Lives remain:</h2>
+        </div>
+        
+        <!-- display hang man image here -->
+        <div id = 'hangMan'>
+            <img src="" alt="hangman1">
+        </div>
+        
+        <!-- display correct number of '_'s and corresponding hint -->
+        <div div id = 'guess'>
+            <p id = blanks><p>
+            <p id = description><p>
+        </div>
 
-    <!-- display lives and score -->
-    <div id = 'data'>
-        <h2 id = score>Score:</h2>
-        <h2 id = lives>Lives remain:</h2>
-    </div>
-    
-    <!-- display hang man image here -->
-    <img id = hangMan>
-    
-    <!-- display correct number of '_'s and corresponding hint -->
-    <div div id = 'guess'>
-        <p id = blanks><p>
-        <p id = description><p>
-    </div>
+        <!-- generate 26 letter buttons -->
+        <div id='letters'> 
+        </div>
 
-    <!-- generate 26 letter buttons -->
-    <div id='letters'> 
-    </div>
+        <!-- generate control buttons -->
+        <div id = 'controls'>
+        </br>
+            <input id = restart type = 'button' value = 'Restart'>
+            <input id = endButton type = 'button' value = 'End'>
+        </div>
 
-    <!-- generate control buttons -->
-    <div id = 'controls'>
-        <input id = restart type = 'button' value = 'Restart'>
-        <input id = endButton type = 'button' value = 'End'>
-    </div>
+        <!-- bonus question: create a leader board -->
+        <div id = leaderboard>
 
-    <!-- bonus question: create a leader board -->
-    <div id = leaderboard>
-
+        </div>
     </div>
 
 

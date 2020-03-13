@@ -18,6 +18,8 @@ function buttonGenerator(n) {
         let bttn = document.createElement("button");
         lettersContainer.appendChild(bttn);
         bttn.innerHTML = list[i];
+        bttn.setAttribute('id', 'letterButton'); 
+        // I added the above line to assign the id to all of the newly created buttons, and use the id to assign new style to them.
         bttn.onclick = function click() {
             console.log('button ' + bttn.innerHTML + ' is clicked');
         }
