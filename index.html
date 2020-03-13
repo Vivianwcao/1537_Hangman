@@ -11,16 +11,17 @@
 
     <!-- display lives and score -->
     <div id = 'data'>
-        <h2 id = score>Score:</h2>
-        <h2 id = lives>Lives remain:</h2>
+        <h2 id="score">Score: 0</h2>
+        <h2 id="lives">Lives remain: 7</h2>
+        <h3 id="gameover"></h3>
     </div>
     
     <!-- display hang man image here -->
-    <img id = hangMan>
+    <img id="hangMan" src="images/nomistakes.png" height="200px">
     
     <!-- display correct number of '_'s and corresponding hint -->
     <div div id = 'guess'>
-        <p id = blanks><p>
+        <p id ="blanks"><p>
         <p id = description><p>
     </div>
 
@@ -30,8 +31,8 @@
 
     <!-- generate control buttons -->
     <div id = 'controls'>
-        <input id = restart type = 'button' value = 'Restart'>
-        <input id = endButton type = 'button' value = 'End'>
+        <input id ="restart" type = 'button' value = 'Restart'>
+        <input id ="endButton" type = 'button' value = 'End'>
     </div>
 
     <!-- bonus question: create a leader board -->
