@@ -8,8 +8,7 @@ let blanks = document.getElementById("blanks");
 let wordBank = ["committee", "weather", "canopy", "acronym", "electrograph", "hypothetical", "growing", "study", "yolk", "yellow"]
 let guessedWord = ""
 blanks.innerText = ""
-// wordBank[Math.floor(Math.random() * wordBank.length)]
-let chosenWord = "committee"
+let chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)]
 function generateBlanks () {
     
     for (i = 0; i < chosenWord.length; i++) {
