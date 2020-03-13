@@ -8,7 +8,8 @@ let blanks = document.getElementById("blanks");
 let wordBank = ["committee", "weather", "canopy", "acronym", "electrograph", "hypothetical", "growing", "study", "yolk", "yellow"]
 let guessedWord = ""
 blanks.innerText = ""
-let chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)]
+// wordBank[Math.floor(Math.random() * wordBank.length)]
+let chosenWord = "committee"
 function generateBlanks () {
     
     for (i = 0; i < chosenWord.length; i++) {
@@ -36,6 +37,8 @@ function buttonGenerator(n) {
         bttn.onclick = function click() {
             console.log('button ' + bttn.innerHTML + ' is clicked');
             onLetterClick(bttn.innerHTML);
+            setTimeout(function(){ gameOver(); }, 100)
+            this.disabled = true;
         }
     }
 }
@@ -45,8 +48,6 @@ buttonGenerator(26);
 
 
 //Blank lines:'_ _ _ _ _'
-
-console.log(guessedWord)
 
 function displayWord(word) {
     blanks.innerText = ""
@@ -80,6 +81,7 @@ function replaceBlanksWithLetter(letter) {
     for (i = 0; i < guessedWord.length; i++) {
         if (chosenWord[i] == letter) {
             guessedWord[i] = letter
+            score = score + 1
         }
         
     }
@@ -90,13 +92,78 @@ function onLetterClick (letter) {
     if (checkLetterInWord(letter)) {
         replaceBlanksWithLetter(letter)
         displayWord(guessedWord)
-        score = score + 1
         document.getElementById("score").innerHTML = "Score: " +  score.toString()
     } else {
         lives = lives - 1
-        document.getElementById("lives").innerHTML = "Lives remain: " +  lives.toString()
+        if (lives >= 0) {
+            document.getElementById("lives").innerHTML = "Lives remain: " +  lives.toString()
+            changeHangman()
+        }
+        
+    
     }
+    
 }
+
+function changeHangman() {
+    if (lives == 6) {
+        document.getElementById("hangMan").src = "images/onemistakes.png"
+    }
+    if (lives == 5) {
+        document.getElementById("hangMan").src = "images/twomistakes.png"
+    }
+    if (lives == 4) {
+        document.getElementById("hangMan").src = "images/threemistakes.png"
+    }
+    if (lives == 3) {
+        document.getElementById("hangMan").src = "images/fourmistakes.png"
+    }
+    if (lives == 2) {
+        document.getElementById("hangMan").src = "images/fivemistakes.png"
+    }
+    if (lives == 1) {
+        document.getElementById("hangMan").src = "images/sixmistakes.png"
+    }
+    if (lives == 0) {
+        document.getElementById("hangMan").src = "images/7mistakes.png"
+    }
+    
+}
+
+function gameOver () {
+    let name = ""
+    wordComplete = true
+    for (i = 0; i < guessedWord.length; i++) {
+        if (guessedWord.includes("_")) {
+            wordComplete = false
+        }
+    }
+    if (wordComplete) {
+        document.getElementById("gameover").innerText = "Congratulations"
+        name = prompt("Enter your name:")
+        document.getElementById("gameover").innerText = "Congratulations " + name + "! your score is " + score.toString()
+    }
+
+    if (lives < 0) {
+        document.getElementById("gameover").innerText = "GAME OVER"
+        name = prompt("Enter your name:")
+        document.getElementById("gameover").innerText = "GAME OVER " + name + " your score is " + score.toString() + ". Better luck next time!"
+        document.getElementById("hangMan").src = "images/dead.png"
+    }
+
+}
+
+function endGame() {
+    document.getElementById("gameover").innerText = "GAME OVER"
+    name = prompt("Enter your name:")
+    document.getElementById("gameover").innerText = "GAME OVER " + name + " your score is " + score.toString() + ". Better luck next time!"
+    document.getElementById("hangMan").src = "images/dead.png"
+
+}
+
+document.getElementById("endButton").onclick = endGame;
+
+
 //while life > 0:
 //      if correct -> 1. letter/s will be shown on coresponding blank lines
 //                    2. updates on "Score" (current + # of correct letters).
