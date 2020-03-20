@@ -26,27 +26,30 @@ let lettersContainer = document.getElementById('letters');
 
 let list = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'];
 list.sort();
-function buttonGenerator(n) {
-    let i;
-    for (i = 0; i < n; i++) {
+
+function buttons(id) {
+    this.id = id;
+    this.createButton = function () {
         let bttn = document.createElement("button");
-        bttn.id = list[i]
-        lettersContainer.appendChild(bttn);
-        bttn.innerHTML = list[i];
-        bttn.onclick = function click() {
-            console.log('button ' + bttn.innerHTML + ' is clicked');
-            onLetterClick(bttn.innerHTML);
-            setTimeout(function(){ gameOver(); }, 100)
+        document.body.appendChild(bttn);
+        bttn.innerHTML = this.id;
+        bttn.onclick = function () {
+            onLetterClick(this.innerHTML);
+            setTimeout(function () { gameOver(); }, 100)
             this.disabled = true;
         }
     }
 }
-buttonGenerator(26);
-            
+function buttonGenerator(n) {
+    let i;
+    for (i = 0; i < n; i++) {
+        let bttn = new buttons(list[i]);
+        bttn.createButton();
+    }
+}
+buttonGenerator(26); 
 
-
-
-//Blank lines:'_ _ _ _ _'
+// Blank lines:'_ _ _ _ _'
 
 function displayWord(word) {
     blanks.innerText = ""
