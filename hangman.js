@@ -9,8 +9,8 @@ let wordBank = ["committee", "weather", "canopy", "acronym", "electrograph", "hy
 let guessedWord = ""
 blanks.innerText = ""
 let chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)]
-function generateBlanks () {
-    
+function generateBlanks() {
+
     for (i = 0; i < chosenWord.length; i++) {
         guessedWord = guessedWord + "_"
     }
@@ -18,7 +18,6 @@ function generateBlanks () {
 }
 
 guessedWord = generateBlanks()
-
 
 
 //generate 26 letters using object constructors.
@@ -35,8 +34,9 @@ function buttons(id) {
         bttn.innerHTML = this.id;
         bttn.onclick = function () {
             onLetterClick(this.innerHTML);
-            setTimeout(function () { gameOver(); }, 100)
-            this.disabled = true;
+            setTimeout(function () { 
+                gameOver(); }, 100)
+                this.disabled = true;
         }
     }
 }
@@ -44,28 +44,22 @@ function buttonGenerator(n) {
     let i;
     for (i = 0; i < n; i++) {
         let bttn = new buttons(list[i]);
-        bttn.setAttribute('id', 'letterButton');
-        // I added the above line to assign the id to all of the newly created buttons, and use the id to assign new style to them.
         bttn.createButton();
     }
 }
 buttonGenerator(26); 
 
-// Blank lines:'_ _ _ _ _'
+
+//Blank lines:'_ _ _ _ _'
 
 function displayWord(word) {
     blanks.innerText = ""
     for (i = 0; i < word.length; i++) {
-    blanks.innerText = blanks.textContent + " " + word[i]
+        blanks.innerText = blanks.textContent + " " + word[i]
     }
 }
 
 displayWord(guessedWord)
-
-
-//randomly select a word as user refreshes the page.
-
-
 
 
 //**check whether each guess is correct/matches the word shown:
@@ -87,26 +81,26 @@ function replaceBlanksWithLetter(letter) {
             guessedWord[i] = letter
             score = score + 1
         }
-        
+
     }
     guessedWord = guessedWord.join("")
 }
 
-function onLetterClick (letter) {
+function onLetterClick(letter) {
     if (checkLetterInWord(letter)) {
         replaceBlanksWithLetter(letter)
         displayWord(guessedWord)
-        document.getElementById("score").innerHTML = "Score: " +  score.toString()
+        document.getElementById("score").innerHTML = "Score: " + score.toString()
     } else {
         lives = lives - 1
         if (lives >= 0) {
-            document.getElementById("lives").innerHTML = "Lives remain: " +  lives.toString()
+            document.getElementById("lives").innerHTML = "Lives remain: " + lives.toString()
             changeHangman()
         }
-        
-    
+
+
     }
-    
+
 }
 
 function changeHangman() {
@@ -131,10 +125,10 @@ function changeHangman() {
     if (lives == 0) {
         document.getElementById("hangMan").src = "images/7mistakes.png"
     }
-    
+
 }
 
-function gameOver () {
+function gameOver() {
     let name = ""
     wordComplete = true
     for (i = 0; i < guessedWord.length; i++) {
@@ -157,6 +151,7 @@ function gameOver () {
 
 }
 
+//'end' button: end the game. Ask user to enter their name.
 function endGame() {
     document.getElementById("gameover").innerText = "GAME OVER"
     name = prompt("Enter your name:")
@@ -164,7 +159,6 @@ function endGame() {
     document.getElementById("hangMan").src = "images/dead.png"
 
 }
-
 document.getElementById("endButton").onclick = endGame;
 
 
@@ -197,7 +191,6 @@ document.getElementById("endButton").onclick = endGame;
 
 
 
-//'end' button: end the game. Ask user to enter their name.
 
 
 
