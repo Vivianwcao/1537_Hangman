@@ -34,8 +34,9 @@ function buttons(id) {
         bttn.innerHTML = this.id;
         bttn.onclick = function () {
             onLetterClick(this.innerHTML);
-            setTimeout(function () { gameOver(); }, 100)
-            this.disabled = true;
+            setTimeout(function () { 
+                gameOver(); }, 100)
+                this.disabled = true;
         }
     }
 }
@@ -49,32 +50,6 @@ function buttonGenerator(n) {
 buttonGenerator(26); 
 
 
-
-//generate 26 letters using object constructors.
-// let lettersContainer = document.getElementById('letters');
-
-// let list = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'];
-// list.sort();
-// function buttonGenerator(n) {
-//     let i;
-//     for (i = 0; i < n; i++) {
-//         let bttn = document.createElement("button");
-//         bttn.id = list[i]
-//         lettersContainer.appendChild(bttn);
-//         bttn.innerHTML = list[i];
-//         bttn.onclick = function click() {
-//             console.log('button ' + bttn.innerHTML + ' is clicked');
-//             onLetterClick(bttn.innerHTML);
-//             setTimeout(function () { gameOver(); }, 100)
-//             this.disabled = true;
-//         }
-//     }
-// }
-// buttonGenerator(26);
-
-
-
-
 //Blank lines:'_ _ _ _ _'
 
 function displayWord(word) {
@@ -85,11 +60,6 @@ function displayWord(word) {
 }
 
 displayWord(guessedWord)
-
-
-//randomly select a word as user refreshes the page.
-
-
 
 
 //**check whether each guess is correct/matches the word shown:
@@ -181,6 +151,7 @@ function gameOver() {
 
 }
 
+//'end' button: end the game. Ask user to enter their name.
 function endGame() {
     document.getElementById("gameover").innerText = "GAME OVER"
     name = prompt("Enter your name:")
@@ -188,7 +159,6 @@ function endGame() {
     document.getElementById("hangMan").src = "images/dead.png"
 
 }
-
 document.getElementById("endButton").onclick = endGame;
 
 
@@ -221,6 +191,6 @@ document.getElementById("endButton").onclick = endGame;
 
 
 
-//'end' button: end the game. Ask user to enter their name.
+
 
 
