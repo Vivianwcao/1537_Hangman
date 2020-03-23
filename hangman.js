@@ -1,9 +1,23 @@
 //initialize variables
-
+let score = 0;
+let lives = 7;
 
 
 //generate 10 words and their descriptions(hint) in a dictionary.
+let blanks = document.getElementById("blanks");
+let wordBank = ["committee", "weather", "canopy", "acronym", "electrograph", "hypothetical", "growing", "study", "yolk", "yellow"]
+let guessedWord = ""
+blanks.innerText = ""
+let chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)]
+function generateBlanks () {
+    
+    for (i = 0; i < chosenWord.length; i++) {
+        guessedWord = guessedWord + "_"
+    }
+    return guessedWord
+}
 
+guessedWord = generateBlanks()
 
 
 
@@ -12,28 +26,41 @@ let lettersContainer = document.getElementById('letters');
 
 let list = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'];
 list.sort();
-function buttonGenerator(n) {
-    let i;
-    for (i = 0; i < n; i++) {
+
+function buttons(id) {
+    this.id = id;
+    this.createButton = function () {
         let bttn = document.createElement("button");
-        lettersContainer.appendChild(bttn);
-        bttn.innerHTML = list[i];
-        bttn.setAttribute('id', 'letterButton'); 
-        // I added the above line to assign the id to all of the newly created buttons, and use the id to assign new style to them.
-        bttn.onclick = function click() {
-            console.log('button ' + bttn.innerHTML + ' is clicked');
+        document.body.appendChild(bttn);
+        bttn.innerHTML = this.id;
+        bttn.onclick = function () {
+            onLetterClick(this.innerHTML);
+            setTimeout(function () { gameOver(); }, 100)
+            this.disabled = true;
         }
     }
 }
-buttonGenerator(26);
-            
+function buttonGenerator(n) {
+    let i;
+    for (i = 0; i < n; i++) {
+        let bttn = new buttons(list[i]);
+        bttn.setAttribute('id', 'letterButton');
+        // I added the above line to assign the id to all of the newly created buttons, and use the id to assign new style to them.
+        bttn.createButton();
+    }
+}
+buttonGenerator(26); 
 
+// Blank lines:'_ _ _ _ _'
 
+function displayWord(word) {
+    blanks.innerText = ""
+    for (i = 0; i < word.length; i++) {
+    blanks.innerText = blanks.textContent + " " + word[i]
+    }
+}
 
-//Blank lines:'_ _ _ _ _'
-
-
-
+displayWord(guessedWord)
 
 
 //randomly select a word as user refreshes the page.
@@ -42,6 +69,105 @@ buttonGenerator(26);
 
 
 //**check whether each guess is correct/matches the word shown:
+function checkLetterInWord(letter) {
+    for (i = 0; i < chosenWord.length; i++) {
+        if (chosenWord.includes(letter)) {
+            return true
+        } else {
+            return false
+        }
+
+    }
+}
+
+function replaceBlanksWithLetter(letter) {
+    guessedWord = guessedWord.split("")
+    for (i = 0; i < guessedWord.length; i++) {
+        if (chosenWord[i] == letter) {
+            guessedWord[i] = letter
+            score = score + 1
+        }
+        
+    }
+    guessedWord = guessedWord.join("")
+}
+
+function onLetterClick (letter) {
+    if (checkLetterInWord(letter)) {
+        replaceBlanksWithLetter(letter)
+        displayWord(guessedWord)
+        document.getElementById("score").innerHTML = "Score: " +  score.toString()
+    } else {
+        lives = lives - 1
+        if (lives >= 0) {
+            document.getElementById("lives").innerHTML = "Lives remain: " +  lives.toString()
+            changeHangman()
+        }
+        
+    
+    }
+    
+}
+
+function changeHangman() {
+    if (lives == 6) {
+        document.getElementById("hangMan").src = "images/onemistakes.png"
+    }
+    if (lives == 5) {
+        document.getElementById("hangMan").src = "images/twomistakes.png"
+    }
+    if (lives == 4) {
+        document.getElementById("hangMan").src = "images/threemistakes.png"
+    }
+    if (lives == 3) {
+        document.getElementById("hangMan").src = "images/fourmistakes.png"
+    }
+    if (lives == 2) {
+        document.getElementById("hangMan").src = "images/fivemistakes.png"
+    }
+    if (lives == 1) {
+        document.getElementById("hangMan").src = "images/sixmistakes.png"
+    }
+    if (lives == 0) {
+        document.getElementById("hangMan").src = "images/7mistakes.png"
+    }
+    
+}
+
+function gameOver () {
+    let name = ""
+    wordComplete = true
+    for (i = 0; i < guessedWord.length; i++) {
+        if (guessedWord.includes("_")) {
+            wordComplete = false
+        }
+    }
+    if (wordComplete) {
+        document.getElementById("gameover").innerText = "Congratulations"
+        name = prompt("Enter your name:")
+        document.getElementById("gameover").innerText = "Congratulations " + name + "! your score is " + score.toString()
+    }
+
+    if (lives < 0) {
+        document.getElementById("gameover").innerText = "GAME OVER"
+        name = prompt("Enter your name:")
+        document.getElementById("gameover").innerText = "GAME OVER " + name + " your score is " + score.toString() + ". Better luck next time!"
+        document.getElementById("hangMan").src = "images/dead.png"
+    }
+
+}
+
+function endGame() {
+    document.getElementById("gameover").innerText = "GAME OVER"
+    name = prompt("Enter your name:")
+    document.getElementById("gameover").innerText = "GAME OVER " + name + " your score is " + score.toString() + ". Better luck next time!"
+    document.getElementById("hangMan").src = "images/dead.png"
+
+}
+
+document.getElementById("endButton").onclick = endGame;
+
+
 //while life > 0:
 //      if correct -> 1. letter/s will be shown on coresponding blank lines
 //                    2. updates on "Score" (current + # of correct letters).
