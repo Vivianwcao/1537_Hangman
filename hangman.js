@@ -12,12 +12,12 @@ let chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)]
 function generateBlanks() {
 
     for (i = 0; i < chosenWord.length; i++) {
-        guessedWord = guessedWord + "_"
+        guessedWord = guessedWord + "_";
     }
     return guessedWord
 }
 
-guessedWord = generateBlanks()
+guessedWord = generateBlanks();
 
 
 //generate 26 letters using object constructors.
@@ -62,6 +62,7 @@ function displayWord(word) {
 displayWord(guessedWord)
 
 
+
 //**check whether each guess is correct/matches the word shown:
 function checkLetterInWord(letter) {
     for (i = 0; i < chosenWord.length; i++) {
@@ -94,8 +95,8 @@ function onLetterClick(letter) {
     } else {
         lives = lives - 1
         if (lives >= 0) {
-            document.getElementById("lives").innerHTML = "Lives remain: " + lives.toString()
-            changeHangman()
+            document.getElementById("lives").innerHTML = "Lives remain: " + lives.toString();
+            changeHangman();
         }
 
 
@@ -161,6 +162,23 @@ function endGame() {
 }
 document.getElementById("endButton").onclick = endGame;
 
+//'restart' button:  the number of lives resets back to 7 , 
+//and the word goes back to blank spaces 
+//( everything resets including lives, score, and word altogether)
+function restart() {
+    document.getElementById('lives').innerHTML = 'Lives remain: 7';
+    document.getElementById('score').innerHTML = 'Score: 0'
+    lives = 7;
+    changeHangman();
+    generateBlanks();
+    replaceBlanksWithLetter('_');
+
+}
+document.getElementById('restart').onclick = restart;
+
+
+
+
 
 //while life > 0:
 //      if correct -> 1. letter/s will be shown on coresponding blank lines
@@ -176,16 +194,6 @@ document.getElementById("endButton").onclick = endGame;
 //              1. display message: you're dead!
 //              2. Hangman image displayed at 100%
 //              3. prompt for user's name -> store name and score in an object?
-
-
-
-
-
-
-//'restart' button:  the number of lives resets back to 7 , 
-//and the word goes back to blank spaces 
-//( everything resets including lives, score, and word altogether)
-
 
 
 
