@@ -44,6 +44,8 @@ function buttonGenerator(n) {
     let i;
     for (i = 0; i < n; i++) {
         let bttn = new buttons(list[i]);
+        bttn.setAttribute('id', 'letterButton');
+        // I added the above line to assign the id to all of the newly created buttons, and use the id to assign new style to them.
         bttn.createButton();
     }
 }
