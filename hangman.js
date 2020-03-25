@@ -18,6 +18,7 @@ function generateBlanks() {
 }
 
 guessedWord = generateBlanks()
+guessedWord.fontsize = "60px"
 
 
 //generate 26 letters using object constructors.
@@ -32,6 +33,15 @@ function buttons(id) {
         let bttn = document.createElement("button");
         document.body.appendChild(bttn);
         bttn.innerHTML = this.id;
+
+        bttn.style.width = "60px";
+        bttn.style.height = "40px";
+        bttn.style.borderRadius = "10px";
+        bttn.style.fontSize = "25px";
+        bttn.style.margin = "0.8%";
+        bttn.style.marginLeft = "2%";
+        // bttn
+        
         bttn.onclick = function () {
             onLetterClick(this.innerHTML);
             setTimeout(function () { 
