@@ -186,11 +186,9 @@ document.getElementById("endButton").onclick = endGame;
 //and the word goes back to blank spaces 
 //( everything resets including lives, score, and word altogether)
 
+function restartGame() {
+    location.reload();
+    return false;
+}
 
-
-
-
-
-
-
-
+// used location.reload() to reload the page, hence resetting everything
