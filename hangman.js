@@ -18,7 +18,6 @@ function generateBlanks() {
 }
 
 guessedWord = generateBlanks()
-guessedWord.fontsize = "60px"
 
 
 //generate 26 letters using object constructors.
@@ -34,12 +33,13 @@ function buttons(id) {
         document.body.appendChild(bttn);
         bttn.innerHTML = this.id;
 
-        bttn.style.width = "60px";
-        bttn.style.height = "40px";
-        bttn.style.borderRadius = "10px";
-        bttn.style.fontSize = "25px";
-        bttn.style.margin = "0.8%";
+        bttn.style.width = "90px";
+        bttn.style.height = "60px";
+        bttn.style.borderRadius = "20px";
+        bttn.style.fontSize = "40px";
+        bttn.style.margin = "0.5%";
         bttn.style.marginLeft = "2%";
+        bttn.style.color = "orange"
         // bttn
         
         bttn.onclick = function () {
@@ -172,6 +172,10 @@ function endGame() {
 document.getElementById("endButton").onclick = endGame;
 
 
+function restart() {
+    location.reload();
+}
+document.getElementById("restart").onclick = restart;
 //while life > 0:
 //      if correct -> 1. letter/s will be shown on coresponding blank lines
 //                    2. updates on "Score" (current + # of correct letters).

@@ -1,6 +1,7 @@
 body {
   text-align: center;
-  background-color: lightblue;
+  background-image: url("images/background.png");
+  background-size: 1800px 1100px, cover;
   font-family: 'Lucida Sans', sans-serif;
 }
 
@@ -19,16 +20,30 @@ td {
   padding: 50px;
 }
 
+#score {
+  font-size: 45px;
+  color: white;
+}
+
+#lives {
+  font-size: 45px;
+  color: white;
+}
+
 #hangMan{
   position: relative;
   width: 20%;
   height: 50%;
   left: 40%;
+  margin-top: -25%;
+  margin-bottom: 100px;
   background: lime;
 }
 
 #blanks{
-  font-size: 60px;
+  font-size: 100px;
+  color: white;
+  margin-top: -10%;
 }
 
 #letters{
@@ -36,6 +51,7 @@ td {
   text-align: center;
   width: 60%;
   left: 20%;
+  margin-bottom: 10%;
 }
 
 #buttons{
@@ -44,15 +60,16 @@ td {
 
 #letterButton, #restart, #endButton{
   font-family: 'Lucida Sans', sans-serif;
-  background-color: lightgreen;
+  background-color: lightsalmon;
   text-align: center;
   padding: .8vh .8vw;
   border: 1px solid black;
   border-radius: 8px;
-  width: 10%;
-  font-size: large;
+  width: 15%;
+  font-size: 40px;
   margin : 10px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  color: white;
 }
 
 #data {
