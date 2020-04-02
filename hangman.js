@@ -16,8 +16,29 @@ function generateBlanks() {
     }
     return guessedWord
 }
-
+if (chosenWord === "committee") {
+    document.write("<h2>a person or group of persons elected or appointed to perform some service or function, as to investigate, report on, or act upon a particular matter.</h2>");
+}if (chosenWord === "weather") {
+    document.write("<h2>the state of the atmosphere with respect to wind, temperature, cloudiness, moisture, pressure, etc.</h2>");
+}if (chosenWord === "canopy") {
+    document.write("<h2>a covering, usually of fabric, supported on poles or suspended above a bed, throne, exalted personage, or sacred object.</h2>");
+}if (chosenWord === "acronym") {
+    document.write("<h2>a word formed from the initial letters or groups of letters of words in a set phrase or series of words and pronounced as a separate word</h2>");
+}if (chosenWord === "electrograph") {
+    document.write("<h2>a curve or plot automatically traced by the action of an electric device, as an electrometer or an electrically controlled pen.</h2>");
+}if (chosenWord === "hypothetical") {
+    document.write("<h2>assumed by hypothesis; supposed:</h2>");
+}if (chosenWord === "growing"){
+    document.write("<h2>becoming greater in quantity, size, extent, or intensity:</h2>");
+}if (chosenWord === "study"){
+    document.write("<h2>to apply oneself to the acquisition of knowledge, as by reading, investigation, or practice.</h2>");
+}if (chosenWord === "yolk"){
+    document.write("<h2>the yellow and principal substance of an egg, as distinguished from the white.</h2>");
+}if (chosenWord === "yellow"){
+    document.write("<h2>a color like that of egg yolk, ripe lemons, etc.; the primary color between green and orange in the visible spectrum, an effect of light with a wavelength between 570 and 590 nm.</h2>");
+}
 guessedWord = generateBlanks()
+
 
 
 //generate 26 letters using object constructors.
