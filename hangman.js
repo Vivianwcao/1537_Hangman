@@ -165,35 +165,24 @@ document.getElementById("endButton").onclick = endGame;
 //'restart' button:  the number of lives resets back to 7 , 
 //and the word goes back to blank spaces 
 //( everything resets including lives, score, and word altogether)
-function restart() {
-    document.getElementById('lives').innerHTML = 'Lives remain: 7';
-    document.getElementById('score').innerHTML = 'Score: 0'
-    lives = 7;
-    changeHangman();
-    generateBlanks();
-    replaceBlanksWithLetter('_');
 
+// function restart() {
+//     document.getElementById('lives').innerHTML = 'Lives remain: 7';
+//     document.getElementById('score').innerHTML = 'Score: 0'
+//     lives = 7;
+//     changeHangman();
+//     generateBlanks();
+//     replaceBlanksWithLetter('_');
+
+// }
+function restartGame() {
+    location.reload();
+    return false;
 }
-document.getElementById('restart').onclick = restart;
+document.getElementById('restart').onclick = restartGame;
 
 
 
-
-
-//while life > 0:
-//      if correct -> 1. letter/s will be shown on coresponding blank lines
-//                    2. updates on "Score" (current + # of correct letters).
-//      if incorrect ->
-//                    1. updates on "lives remain" (current life - 1).
-//                    2. updates on "Score" (current - # of correct letters).
-//                    3. hangman image updates.
-//      if entirely correct:
-//                    1. displays congradulation!
-//                    2. prompt for user's name -> store name and score in an object?
-//if life == 0:
-//              1. display message: you're dead!
-//              2. Hangman image displayed at 100%
-//              3. prompt for user's name -> store name and score in an object?
 
 
 
