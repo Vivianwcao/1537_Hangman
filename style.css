@@ -1,7 +1,17 @@
-body {
+/* body {
   text-align: center;
   background-color: lightblue;
   font-family: 'Lucida Sans', sans-serif;
+} */
+body {
+  text-align: center;
+  background-color: rgb(144, 185, 196);
+  background-size: 1800px 1100px, cover;
+  font-family: 'Lucida Sans', sans-serif;
+}
+#data {
+  left:40%;
+
 }
 
 td {
@@ -19,12 +29,12 @@ td {
   padding: 50px;
 }
 
-#hangMan{
+#hangManBox {
   position: relative;
   width: 20%;
   height: 50%;
-  left: 40%;
-  background: lime;
+  left: 36%;
+  /* background: lime; */
 }
 
 #letters{
@@ -34,17 +44,18 @@ td {
   left: 20%;
 }
 
-#letterButton, #restart, #endButton{
+button, #restart, #endButton{
   font-family: 'Lucida Sans', sans-serif;
   background-color: lightgreen;
   text-align: center;
   padding: .8vh .8vw;
   border: 1px solid black;
   border-radius: 8px;
-
   margin: 2px;
 }
-
+button {
+  background-color: rgb(226, 255, 133);
+}
 #data {
   position: relative;
   text-align: left;
@@ -56,6 +67,5 @@ td {
 }
 
 #a {
-
     color: red;
 }
