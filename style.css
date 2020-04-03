@@ -3,16 +3,22 @@
   background-color: lightblue;
   font-family: 'Lucida Sans', sans-serif;
 } */
+
+html {
+
+  height: auto;
+  
+}
 body {
   text-align: center;
   background-image: url("images/background.jpg");
-  background-size: cover;
   background-repeat: no-repeat;
   font-family: 'Lucida Sans', sans-serif;
 }
-#data {
-  left:40%;
 
+#data {
+  margin: auto;
+  width: 20%
 }
 #guess {
   font-size: 20px;
