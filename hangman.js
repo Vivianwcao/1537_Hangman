@@ -6,17 +6,17 @@ let lives = 7;
 //generate 10 words and their descriptions(hint) in a dictionary.
 
 let blanks = document.getElementById("blanks");
-let wordBank = ["committee", "weather", "canopy", "acronym", "electrograph", "hypothetical", "growing", "study", "yolk", "yellow"]
+let wordBank = ["committee", "weather", "tattoo", "acronym", "electricity", "hypothetical", "growing", "study", "yolk", "yellow"]
 let chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)]
 let guessedWord = ""
 blanks.innerText = ""
 let wordPosition = wordBank.indexOf(chosenWord);
 let description = document.getElementById('description')
-let descriptions = ['A group of people appointed for a specific function.', 'A perfect topic for smalltalking', 'A tent like thing that can protect you from sun or rain', 'The term to say "Do it yourself" as "DIY"', 'A phototelegraphic apparatus for the electrical transmission of pictures.', 'Another term for "theoretical"', 'Another term for "increasing"', 'What we\'ve been doing 24/7 at BCIT', 'A part of an egg', 'A color'];
+let descriptions = ['A group of people appointed for a specific function.', 'A perfect topic for smalltalking', 'a form of body modification where a design is made by inserting ink', 'The term to say "Do it yourself" as "DIY"', 'is the set of physical phenomena associated with the presence and motion of electric charge', 'Another term for "theoretical"', 'Another term for "increasing"', 'What we\'ve been doing 24/7 at BCIT', 'A part of an egg', 'A color'];
 
 description.innerHTML = descriptions[wordPosition];
 
-
+//Create correct amount of blank lines for the randomly chosen word
 function generateBlanks() {
 
     for (i = 0; i < chosenWord.length; i++) {
@@ -47,6 +47,8 @@ function buttons(id) {
         }
     }
 }
+
+//create buttons for every letter
 function buttonGenerator(n) {
     let i;
     for (i = 0; i < n; i++) {
@@ -59,6 +61,7 @@ buttonGenerator(26);
 
 //Blank lines:'_ _ _ _ _'
 
+// display the word blanks to the user.
 function displayWord(word) {
     blanks.innerText = ""
     for (i = 0; i < word.length; i++) {
@@ -70,7 +73,7 @@ displayWord(guessedWord)
 
 
 
-//**check whether each guess is correct/matches the word shown:
+// check whether each guess is correct/matches the word shown:
 function checkLetterInWord(letter) {
     for (i = 0; i < chosenWord.length; i++) {
         if (chosenWord.includes(letter)) {
@@ -82,6 +85,7 @@ function checkLetterInWord(letter) {
     }
 }
 
+// Replace blank line with letter of word 
 function replaceBlanksWithLetter(letter) {
     guessedWord = guessedWord.split("")
     for (i = 0; i < guessedWord.length; i++) {
@@ -94,6 +98,7 @@ function replaceBlanksWithLetter(letter) {
     guessedWord = guessedWord.join("")
 }
 
+// When letters are clicked, check if the letter is correct and make appropriate changes to game-state
 function onLetterClick(letter) {
     if (checkLetterInWord(letter)) {
         replaceBlanksWithLetter(letter)
@@ -111,6 +116,7 @@ function onLetterClick(letter) {
 
 }
 
+// Display the correct hangman picture for for the lives the user has left
 function changeHangman() {
     if (lives == 6) {
         document.getElementById("hangMan").src = "images/onemistakes.png"
@@ -136,6 +142,7 @@ function changeHangman() {
 
 }
 
+//When game is over tell the user their score
 function gameOver() {
     let name = ""
     wordComplete = true
