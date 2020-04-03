@@ -6,13 +6,13 @@ let lives = 7;
 //generate 10 words and their descriptions(hint) in a dictionary.
 
 let blanks = document.getElementById("blanks");
-let wordBank = ["committee", "weather", "canopy", "acronym", "electrograph", "hypothetical", "growing", "study", "yolk", "yellow"]
+let wordBank = ["committee", "weather", "tattoo", "acronym", "electricity", "hypothetical", "growing", "study", "yolk", "yellow"]
 let chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)]
 let guessedWord = ""
 blanks.innerText = ""
 let wordPosition = wordBank.indexOf(chosenWord);
 let description = document.getElementById('description')
-let descriptions = ['A group of people appointed for a specific function.', 'A perfect topic for smalltalking', 'A tent like thing that can protect you from sun or rain', 'The term to say "Do it yourself" as "DIY"', 'A phototelegraphic apparatus for the electrical transmission of pictures.', 'Another term for "theoretical"', 'Another term for "increasing"', 'What we\'ve been doing 24/7 at BCIT', 'A part of an egg', 'A color'];
+let descriptions = ['A group of people appointed for a specific function.', 'A perfect topic for smalltalking', 'a form of body modification where a design is made by inserting ink', 'The term to say "Do it yourself" as "DIY"', 'is the set of physical phenomena associated with the presence and motion of electric charge', 'Another term for "theoretical"', 'Another term for "increasing"', 'What we\'ve been doing 24/7 at BCIT', 'A part of an egg', 'A color'];
 
 description.innerHTML = descriptions[wordPosition];
 
