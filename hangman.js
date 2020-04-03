@@ -157,7 +157,7 @@ function gameOver() {
         document.getElementById("gameover").innerText = "Congratulations " + name + "! your score is " + score.toString()
     }
 
-    if (lives < 0) {
+    if (lives <= 0) {
         document.getElementById("gameover").innerText = "GAME OVER"
         name = prompt("Enter your name:")
         document.getElementById("gameover").innerText = "GAME OVER " + name + " your score is " + score.toString() + ". Better luck next time!"
