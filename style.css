@@ -1,9 +1,14 @@
-body {
+/* body {
   text-align: center;
   background-color: lightblue;
   font-family: 'Lucida Sans', sans-serif;
+} */
+body {
+  text-align: center;
+  background-color: rgb(144, 185, 196);
+  background-size: 1800px 1100px, cover;
+  font-family: 'Lucida Sans', sans-serif;
 }
-
 #data {
   left:40%;
 
@@ -62,6 +67,5 @@ button {
 }
 
 #a {
-
     color: red;
 }
